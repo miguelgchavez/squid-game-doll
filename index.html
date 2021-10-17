@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="css.css">
+
+</head>
+<body>
+
+    <div id="squid-game--doll">
+       <div class="head">
+           <div class="eyes">
+                <div class="eyebrows eyebrows--1"></div>
+                <div class="eyebrows eyebrows--2"></div>
+
+                <div class="eyes-shape eyes-shape--1"></div>
+                <div class="eyes-shape eyes-shape--2"></div>
+           </div>
+           <div class="cheeks"></div>
+           <div class="nose"></div>
+           <div class="mouth"></div>
+           <div class="chin">
+               <div class="chin-shadow"></div>
+           </div>
+           <div class="ears"></div>
+
+           <div class="braids">
+               <div class="braid-1">
+                   <div class="detail-1"></div>
+                   <div class="detail-2">
+                       <span></span>
+                       <span></span>
+                   </div>
+               </div>
+
+               <div class="braid-2">
+                <div class="detail-1"></div>
+                <div class="detail-2">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+           </div>
+       </div>
+
+       <div class="body">
+           <div class="neck"></div>
+           <div class="clothes">
+                <div></div>
+                <div></div>
+           </div>
+           <div class="clothes-details--1">
+                <div></div>
+                <div></div>
+                
+                <span></span>
+                <span></span>
+           </div>
+
+       </div>
+    </div>
+
+    <div class="squid-game--minion circle-minion">
+        <div class="head">
+            <div class="mask-border">
+                <div class="mask">
+                    <span class="figure"></span>
+                </div>
+            </div>
+            <div class="mask-details"></div>
+        </div>
+
+        <div class="body">
+            <div class="zipper"></div>
+
+            <div class="arms arm-left"></div>
+            <div class="arms arm-right"></div>
+
+
+            <div class="legs legs-left"></div>
+            <div class="legs legs-right"></div>
+        </div>
+    </div>
+
+    <div class="squid-game--minion circle-minion">
+        <div class="head">
+            <div class="mask-border">
+                <div class="mask">
+                    <span class="figure"></span>
+                </div>
+            </div>
+            <div class="mask-details"></div>
+        </div>
+
+        <div class="body">
+            <div class="zipper"></div>
+
+            <div class="arms arm-left"></div>
+            <div class="arms arm-right"></div>
+
+
+            <div class="legs legs-left"></div>
+            <div class="legs legs-right"></div>
+        </div>
+    </div>
+
+    <audio loop id="doll-song">
+        <source src="squid-game--doll.mp3" type="audio/mpeg"> 
+    </audio>
+
+    <div id="play-game"></div>
+
+    <script>
+        let song        = document.querySelector('#doll-song')
+        let playGame    = document.querySelector('#play-game')
+        let doll        = document.querySelector('#squid-game--doll')
+
+        const play      = () => {  song.play()  }
+        const pause     = () => {  song.pause() }
+        const restart   = () => {  song.currentTime = 0 }
+
+        playGame.addEventListener('click', () =>{
+            if(!playGame.classList.contains('leave-game')){
+                playGame.classList.add('leave-game')
+                doll.classList.add('active-eyes') 
+                play()
+            }else{
+                playGame.classList.remove('leave-game')
+                doll.classList.remove('active-eyes')
+                restart()
+                pause()
+            }
+
+            song.ontimeupdate = function(){
+                if(song.currentTime >= 11){
+                    restart()
+                    doll.classList.remove('active-eyes')
+                    void doll.offsetWidth
+                    doll.classList.add('active-eyes') 
+                }
+            }
+        })
+
+    </script>
+    
+</body>
+</html>
